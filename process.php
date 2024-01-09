@@ -7,11 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ice Cream Order Summary</title>
 </head>
-<body>
+<body style="background-color: lightblue">
 
     <h1>Thank you for your order!</h1>
 
     <?php
+
+        //Turn on error reporting
+        ini_set("display_errors", 1);
+        error_reporting(E_ALL);
+
+        //Define constants
+        define("PRICE_PER_SCOOP", 2.50);
+        define("SALES_TAX_RATE", 0.11);
+
+
 //        echo "<pre>";
 //        var_dump($_POST);
 //        echo "</pre>";
@@ -22,10 +32,19 @@
         $cone = $_POST['cone'];
 
 
+        // Calculate total due
+        $subtotal = PRICE_PER_SCOOP * $scoops;
+        $tax = SALES_TAX_RATE * $subtotal;
+        $total = $subtotal + $tax;
+
         // Print a summary
         echo "<p>$scoops scoops</p>";
         echo "<p>Flavors: $flavorString</p>";
         echo "<p>$cone cone</p>";
+
+        echo "<p>Subtotal: $subtotal</p>";
+        echo "<p>Tax: $tax</p>";
+        echo "<p>Total: $total</p>";
 
     ?>
 </body>
