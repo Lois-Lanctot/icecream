@@ -26,10 +26,30 @@
 //        var_dump($_POST);
 //        echo "</pre>";
 
-        $scoops = $_POST['scoops'];
-        $flavors = $_POST['flavor'];
+        if (!empty($_POST['scoops'])) {
+            $scoops = $_POST['scoops'];
+        }
+        else {
+            echo "<p>Enter scoops!</p>";
+            return;
+        }
+
+        if (isset($_POST['flavor'])) {
+            $flavors = $_POST['flavor'];
+        }
+        else {
+            echo "<p>Please select at least one flavor!</p>";
+            return;
+        }
         $flavorString = implode(", ", $flavors);
-        $cone = $_POST['cone'];
+
+        if (!empty($_POST['cone'])) {
+            $cone = $_POST['cone'];
+        }
+        else {
+            echo "<p>Enter cone type</p>";
+            return;
+        }
 
 
         // Calculate total due
@@ -42,9 +62,9 @@
         echo "<p>Flavors: $flavorString</p>";
         echo "<p>$cone cone</p>";
 
-        echo "<p>Subtotal: $subtotal</p>";
-        echo "<p>Tax: $tax</p>";
-        echo "<p>Total: $total</p>";
+        echo "<p>Subtotal: $$subtotal</p>";
+        echo "<p>Tax: $$tax</p>";
+        echo "<p>Total: $$total</p>";
 
     ?>
 </body>
