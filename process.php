@@ -9,11 +9,25 @@
 </head>
 <body>
 
-<h2>Thank you for your order!</h2>
+    <h1>Thank you for your order!</h1>
 
+    <?php
+//        echo "<pre>";
+//        var_dump($_POST);
+//        echo "</pre>";
+
+        $scoops = $_POST['scoops'];
+        $flavors = $_POST['flavor'];
+        $flavorString = implode(", ", $flavors);
+        $cone = $_POST['cone'];
+
+
+        // Print a summary
+        echo "<p>$scoops scoops</p>";
+        echo "<p>Flavors: $flavorString</p>";
+        echo "<p>$cone cone</p>";
+
+    ?>
 </body>
 </html>
 
-<?php
-
-?>
